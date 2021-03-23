@@ -27,3 +27,11 @@ stages:
         dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
+  - job: Push
+    displayName: Push
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'TestBcpAzureContainerRegistry'
+        repository: 'bcpchallengerepository'
+        command: 'push'
